@@ -22,9 +22,11 @@ int		main(int ac, char **av)
 	while (res == 1)
 	{
 		res = get_next_line(fd, line);
-		printf("Return : %d\n", res);
-		printf("Line %d : %s\n", i, *line);
-		free(*line);
+		if (res != -1)
+		{
+			printf("Line %d : %s\n", i, *line);
+			free(*line);
+		}
 		i++;
 	}
 	if (ac > 1)
