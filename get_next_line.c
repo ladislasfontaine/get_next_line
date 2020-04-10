@@ -24,17 +24,17 @@ int		get_next_line(int fd, char **line)
 	*line[0] = '\0';
 	while (1)
 	{
-		if (n == 0) // si n = 0 c'est qu'on était à la fin du buffer
+		if (n == 0)
 			if ((res = read(fd, buf, BUFFER_SIZE)) >= 0)
 				buf[res] = '\0';
 		n += add_buf_to_line(buf, n, line); // mettre un if ( == -1)
-		if (buf[n] == '\n' || res < BUFFER_SIZE) // fin de la ligne ou fin du fichier
+		if (buf[n] == '\n' || res < BUFFER_SIZE)
 			break ;
 		if (n >= res)
 			n = 0;
 	}
 	n += 1;
-	if (!res)
+	if (!res || (res < BUFFER_SIZE && n > res))
 		return (0);
 	if (n >= res)
 		n = 0;

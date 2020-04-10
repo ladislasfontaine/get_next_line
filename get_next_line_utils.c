@@ -69,6 +69,7 @@ int		add_buf_to_line(char *buf, int n, char **line)
 		free(temp);
 		return (0);
 	}
+	*line[0] = '\0';
 	*line = ft_strncat(*line, temp, (size_t)ft_strlen(temp));
 	*line = ft_strncat(*line, buf + n, (size_t)i);
 	ft_strclr(temp);
