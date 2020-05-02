@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: lafontai <lafontai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/01 20:17:15 by marvin            #+#    #+#             */
-/*   Updated: 2020/04/01 20:18:55 by marvin           ###   ########.fr       */
+/*   Created: 2020/04/01 20:17:15 by lafontai          #+#    #+#             */
+/*   Updated: 2020/05/02 16:48:50 by lafontai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int		get_next_line(int fd, char **line)
 		if (n == 0)
 			if ((res = read(fd, buf, BUFFER_SIZE)) >= 0)
 				buf[res] = '\0';
-		n += add_buf_to_line(buf, n, line); // mettre un if ( == -1)
+		n += add_buf_to_line(buf, n, line);
+		// mettre un if ( == -1)
 		if (buf[n] == '\n' || res < BUFFER_SIZE)
 			break ;
 		if (n >= res)

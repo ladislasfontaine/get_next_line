@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lafontai <lafontai@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/02 16:30:37 by lafontai          #+#    #+#             */
+/*   Updated: 2020/05/02 16:34:22 by lafontai         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 int		ft_strlen(char *str)
@@ -57,7 +69,7 @@ int		add_buf_to_line(char *buf, int n, char **line)
 {
 	char	*temp;
 	int		i;
-	
+
 	i = 0;
 	while (buf[n + i] && buf[n + i] != '\n')
 		i++;
@@ -74,6 +86,5 @@ int		add_buf_to_line(char *buf, int n, char **line)
 	*line = ft_strncat(*line, buf + n, (size_t)i);
 	ft_strclr(temp);
 	free(temp);
-
 	return (i);
 }
