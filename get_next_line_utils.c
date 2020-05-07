@@ -6,7 +6,7 @@
 /*   By: lafontai <lafontai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 16:30:37 by lafontai          #+#    #+#             */
-/*   Updated: 2020/05/07 15:21:03 by lafontai         ###   ########.fr       */
+/*   Updated: 2020/05/07 17:16:27 by lafontai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,21 @@ int		add_buf_to_line(char *buf, int n, char **line)
 	*line = ft_strncat(*line, buf + n, (size_t)i);
 	free(temp);
 	return (i);
+}
+
+void	read_file(char *buf, int *res, int n, int fd)
+{
+	int		i;
+
+	if (n == 0)
+	{
+		i = 0;
+		while (buf[i])
+		{
+			buf[i] = '\0';
+			i++;
+		}
+		if ((*res = read(fd, buf, BUFFER_SIZE)) >= 0)
+			buf[*res] = '\0';
+	}
 }
