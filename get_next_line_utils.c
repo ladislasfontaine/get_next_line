@@ -6,7 +6,7 @@
 /*   By: lafontai <lafontai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 16:30:37 by lafontai          #+#    #+#             */
-/*   Updated: 2020/05/02 16:34:22 by lafontai         ###   ########.fr       */
+/*   Updated: 2020/05/07 15:21:03 by lafontai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,6 @@ char	*ft_strdup(const char *s1)
 	return (s2);
 }
 
-void	ft_strclr(char *s)
-{
-	while (*s)
-	{
-		*s = '\0';
-		s++;
-	}
-}
-
 int		add_buf_to_line(char *buf, int n, char **line)
 {
 	char	*temp;
@@ -74,17 +65,15 @@ int		add_buf_to_line(char *buf, int n, char **line)
 	while (buf[n + i] && buf[n + i] != '\n')
 		i++;
 	temp = ft_strdup(*line);
-	ft_strclr(*line);
 	free(*line);
 	if (!(*line = (char *)malloc(sizeof(char) * (ft_strlen(temp) + i + 1))))
 	{
 		free(temp);
-		return (0);
+		return (-1);
 	}
 	*line[0] = '\0';
 	*line = ft_strncat(*line, temp, (size_t)ft_strlen(temp));
 	*line = ft_strncat(*line, buf + n, (size_t)i);
-	ft_strclr(temp);
 	free(temp);
 	return (i);
 }
